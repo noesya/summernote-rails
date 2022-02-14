@@ -1,7 +1,9 @@
 class SummernoteInput < SimpleForm::Inputs::TextInput
   def input(wrapper_options)
     value = object.public_send(attribute_name)
-    input_html_options[:value] ||= (value.try(:to_trix_html) || value)
+    input_value = value.is_a?(ActionText::Content)  ? @builder.template.render_action_text_content(value)
+                                                    : value
+    input_html_options[:value] ||= value
     input_html_options[:data] ||= {}
     input_html_options[:data].merge!({
       provider: 'summernote',
