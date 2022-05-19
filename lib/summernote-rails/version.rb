@@ -1,5 +1,5 @@
 module SummernoteRails
   module Rails
-    VERSION = "0.8.21"
+    VERSION = "0.8.22"
   end
 end
