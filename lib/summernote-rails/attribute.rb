@@ -19,6 +19,7 @@ module SummernoteRails
             end
 
             def clean_#{name}_summernote_code
+              return if self.#{name}.nil?
               self.#{name} = SummernoteCleaner.clean self.#{name}.to_html
             end
           CODE
