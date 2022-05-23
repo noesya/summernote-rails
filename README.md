@@ -43,7 +43,7 @@ $ bundle install
 
 In app/assets/javascripts/application.js, you should add as follows:
 
-```js
+```javascript
 //= require jquery
 //= require jquery_ujs
 //= require summernote/summernote-lite.min
