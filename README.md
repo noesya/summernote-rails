@@ -80,7 +80,7 @@ To use Summernote in a form, add a `data-provider="summernote"` to an input.
     <%= f.label :text %>
     <%= f.text_area :text, data: { provider: 'summernote' } %>
   </div>
-<% end %>  
+<% end %>
 ```
 
 If you are using simple_form, you can use the `:summernote` input type.
