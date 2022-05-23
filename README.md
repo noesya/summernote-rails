@@ -108,7 +108,7 @@ $(function () {
 
 - [Attachments](docs/active_storage.md)
 - [I18n](docs/i18n.md)
-- [Plugin](docs/i18n.md)
+- [Plugin](docs/plugin.md)
 
 ## Sample projects
 
