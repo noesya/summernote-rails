@@ -43,4 +43,9 @@ class TestSummernoteCleaner < Test::Unit::TestCase
     assert_equal '<h1>title</h1><p>Text</p>', SummernoteCleaner.clean(text)
   end
 
+  def test_removes_empty_paragraphs
+    text = "<p>test</p><p></p><p><br></p><p>\n</p>"
+    assert_equal '<p>test</p>', SummernoteCleaner.clean(text)
+  end
+
 end

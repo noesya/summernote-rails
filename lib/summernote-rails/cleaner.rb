@@ -18,6 +18,9 @@ class SummernoteCleaner
 
   def initialize(code)
     @code = code
+    @code = @code.gsub("<p>\n</p>", "")
+                 .gsub("<p></p>", "")
+                 .gsub("<p><br></p>", "")
     @clean_code = ''
     @current_block_tag = nil
     @open_block_tag_found = nil
