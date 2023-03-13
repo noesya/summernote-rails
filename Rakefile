@@ -57,7 +57,7 @@ def fix_fonts
 
   css_paths.each do |css_path|
     css_file = File.read(css_path)
-    css_file = css_file.gsub(/url\(("\.\/)?font\/(summernote.[a-z0-9#?]+)(")?\)/, 'url(asset-path("\2"))')
+    css_file = css_file.gsub(/url\(("\.\/)?font\/(summernote.[a-z0-9]+)(\?\#iefix)?(")?\)/, 'url(asset-path("\2"))')
     File.open(css_path, "w") {|old_css_file| old_css_file.print css_file}
   end
 end
@@ -67,32 +67,32 @@ def copy_assets(tag_name)
 
   puts 'Copying new JS and CSS files...'
   base_path = "tmp/dist/summernote-#{tag_name.gsub('v', '')}/dist"
-  `cp #{base_path}/summernote-bs4.css vendor/assets/stylesheets/summernote-bs4.css`
+  `cp #{base_path}/summernote-bs4.css vendor/assets/stylesheets/summernote-bs4.scss`
   `cp #{base_path}/summernote-bs4.css.map vendor/assets/stylesheets/summernote-bs4.css.map`
   `cp #{base_path}/summernote-bs4.js vendor/assets/javascripts/summernote/summernote-bs4.js`
   `cp #{base_path}/summernote-bs4.js.map vendor/assets/javascripts/summernote/summernote-bs4.js.map`
-  `cp #{base_path}/summernote-bs4.min.css vendor/assets/stylesheets/summernote-bs4.min.css`
+  `cp #{base_path}/summernote-bs4.min.css vendor/assets/stylesheets/summernote-bs4.min.scss`
   `cp #{base_path}/summernote-bs4.min.js vendor/assets/javascripts/summernote/summernote-bs4.min.js`
 
-  `cp #{base_path}/summernote-bs5.css vendor/assets/stylesheets/summernote-bs5.css`
+  `cp #{base_path}/summernote-bs5.css vendor/assets/stylesheets/summernote-bs5.scss`
   `cp #{base_path}/summernote-bs5.css.map vendor/assets/stylesheets/summernote-bs5.css.map`
   `cp #{base_path}/summernote-bs5.js vendor/assets/javascripts/summernote/summernote-bs5.js`
   `cp #{base_path}/summernote-bs5.js.map vendor/assets/javascripts/summernote/summernote-bs5.js.map`
-  `cp #{base_path}/summernote-bs5.min.css vendor/assets/stylesheets/summernote-bs5.min.css`
+  `cp #{base_path}/summernote-bs5.min.css vendor/assets/stylesheets/summernote-bs5.min.scss`
   `cp #{base_path}/summernote-bs5.min.js vendor/assets/javascripts/summernote/summernote-bs5.min.js`
 
-  `cp #{base_path}/summernote-lite.css vendor/assets/stylesheets/summernote-lite.css`
+  `cp #{base_path}/summernote-lite.css vendor/assets/stylesheets/summernote-lite.scss`
   `cp #{base_path}/summernote-lite.css.map vendor/assets/stylesheets/summernote-lite.css.map`
   `cp #{base_path}/summernote-lite.js vendor/assets/javascripts/summernote/summernote-lite.js`
   `cp #{base_path}/summernote-lite.js.map vendor/assets/javascripts/summernote/summernote-lite.js.map`
-  `cp #{base_path}/summernote-lite.min.css vendor/assets/stylesheets/summernote-lite.min.css`
+  `cp #{base_path}/summernote-lite.min.css vendor/assets/stylesheets/summernote-lite.min.scss`
   `cp #{base_path}/summernote-lite.min.js vendor/assets/javascripts/summernote/summernote-lite.min.js`
 
-  `cp #{base_path}/summernote.css vendor/assets/stylesheets/summernote.css`
+  `cp #{base_path}/summernote.css vendor/assets/stylesheets/summernote.scss`
   `cp #{base_path}/summernote.css.map vendor/assets/javascripts/summernote/summernote.css.map`
   `cp #{base_path}/summernote.js vendor/assets/javascripts/summernote/summernote.js`
   `cp #{base_path}/summernote.js.map vendor/assets/javascripts/summernote/summernote.js.map`
-  `cp #{base_path}/summernote.min.css vendor/assets/stylesheets/summernote.min.css`
+  `cp #{base_path}/summernote.min.css vendor/assets/stylesheets/summernote.min.scss`
   `cp #{base_path}/summernote.min.js vendor/assets/javascripts/summernote/summernote.min.js`
 
   `cp -R #{base_path}/plugin/* vendor/assets/javascripts/summernote/plugin`
