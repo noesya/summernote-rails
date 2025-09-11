@@ -11,5 +11,5 @@ task default: :test
 
 desc "Update assets"
 task 'update' do
-  SummernoteUpdater.new
+  SummernoteUpdater.new.execute
 end

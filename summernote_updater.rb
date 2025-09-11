@@ -56,10 +56,7 @@ class SummernoteUpdater
     @tmp = 'tmp'
     @zip_file = 'tmp/summernote.zip'
     @dist_directory = 'tmp/dist'
-    execute
   end
-
-  protected
 
   def execute
     clean_tmp
@@ -72,6 +69,8 @@ class SummernoteUpdater
     puts "[SummernoteUpdater] Version #{tag_name} updated"
     puts "[SummernoteUpdater] Please upgrade version in lib/summernote-rails/version.rb, test thoroughly, then release"
   end
+
+  protected
 
   def clean_tmp
     puts '[SummernoteUpdater] Cleaning tmp directory'
@@ -109,6 +108,11 @@ class SummernoteUpdater
     `unzip -d #{dist_directory} #{zip_file}`
   end
 
+  def build
+    puts "[SummernoteUpdater] Building #{base_path} (following logs come from yarn)"
+    `cd #{base_path} && yarn install && yarn build`
+  end
+
   def clean_assets
     puts '[SummernoteUpdater] Cleaning old JS and CSS files'
 
@@ -121,11 +125,6 @@ class SummernoteUpdater
     FileUtils.mkdir_p('vendor/assets/fonts')
     FileUtils.mkdir_p('vendor/assets/javascripts/summernote/lang')
     FileUtils.mkdir_p('vendor/assets/javascripts/summernote/plugin')
-  end
-
-  def build
-    puts "[SummernoteUpdater] Building #{base_path} (following logs come from yarn)"
-    `cd #{base_path} && yarn install && yarn build`
   end
 
   def copy_assets
@@ -155,6 +154,5 @@ class SummernoteUpdater
       File.open(css_path, "w") {|old_css_file| old_css_file.print css_file}
     end
   end
-
 
 end
